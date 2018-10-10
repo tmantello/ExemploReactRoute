@@ -1,33 +1,23 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, IndexLink } from "react-router";
 
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="nav has-shadow">
-          <div className="nav-left">
-            <Link
-              to="/"
-              className="nav-item is-tab"
-              activeClassName="is-active"
-            >
-              Home
-            </Link>
-            <Link
-              to="/cursos"
-              className="nav-item is-tab"
-              activeClassName="is-active"
-            >
-              Cursos
-            </Link>
-            <Link
-              to="/sobre"
-              className="nav-item is-tab"
-              activeClassName="is-active"
-            >
-              Sobre
-            </Link>
+        <nav className="navbar" aria-label="main navigation">
+          <div className="navbar-menu is-active">
+            <div class="navbar-start">
+              <IndexLink to="/" className="navbar-item">
+                Home
+              </IndexLink>
+              <Link to="/cursos" className="navbar-item">
+                Cursos
+              </Link>
+              <Link to="/sobre" className="navbar-item">
+                Sobre
+              </Link>
+            </div>
           </div>
         </nav>
         <section className="section">
