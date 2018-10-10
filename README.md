@@ -1,2 +1,0 @@
-# ExemploReactRoute
-Created with CodeSandbox
