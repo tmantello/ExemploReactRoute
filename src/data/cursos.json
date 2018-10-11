@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "nome": "CIÊNCIA DA COMPUTAÇÃO",
+    "periodos": "10",
+    "tipo": "semestral",
+    "coordenador": "ZÉ",
+    "ativo": false,
+    "descricao": "Aprenda a programar (SQN)"
+  },
+  {
+    "id": 1,
+    "nome": "SISTEMAS DE INFORMAÇÃO",
+    "periodos": "8",
+    "tipo": "semestral",
+    "coordenador": "MARIA",
+    "ativo": true,
+    "descricao": "Aprenda a vender programas (hehehe)"
+  },
+  {
+    "id": 2,
+    "nome": "ADMINISTRAÇÃO",
+    "periodos": "4",
+    "tipo": "anual",
+    "coordenador": "ARISTIDES",
+    "ativo": false,
+    "descricao": "Aprenda a administrar empresas (desde que você tenha uma empresa...)"
+  },
+  {
+    "id": 3,
+    "nome": "NATUROLOGIA",
+    "periodos": "8",
+    "tipo": "semestral",
+    "coordenador": "DOGRAS",
+    "ativo": true,
+    "descricao": "Aprenda a VIAJAR"
+  }  
+]
