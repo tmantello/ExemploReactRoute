@@ -1,6 +1,15 @@
 import React from "react";
 
+import messages from "../data/cursos.json";
+
 export default class Cursos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: messages
+    };
+  }
+
   render() {
     return (
       <div>
