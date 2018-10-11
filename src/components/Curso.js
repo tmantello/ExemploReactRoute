@@ -1,5 +1,4 @@
 import React from "react";
-
 import messages from "../data/cursos.json";
 
 const cursos = [
