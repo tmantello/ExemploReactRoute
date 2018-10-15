@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import messages from "../data/cursos.json";
+import nl2br from "react-newline-to-break";
+import Geyzo from "../components/Geyzo";
 
 const cursos = [
   { nome: "CIENCIA" },
@@ -15,13 +17,35 @@ const listItems = messages.map(messages => (
   </li>
 ));
 
+var teste2 = "";
+var teste3 = "";
+var imagens;
+
 export default class Curso extends React.Component {
   constructor() {
+    let array = [
+      "https://randomuser.me/api/portraits/thumb/men/7.jpg",
+      "https://randomuser.me/api/portraits/thumb/men/94.jpg"
+    ];
+
+    imagens = array.map(image => {
+      return <img key={image} src={image} alt="" className="img-responsive" />;
+    });
+
     super();
 
-    this.state = { username: "", username2: [], gender: [] };
+    this.state = {
+      username: "",
+      username2: [],
+      arrayimagens: [],
+      teste4: [],
+      sandoval: []
+    };
     this.handleClick = this.handleClick.bind(this); // obrigatório para manter o contexto do clique do botão dentro da função que busca o dado no json
     this.handleClick2 = this.handleClick2.bind(this);
+
+    //var teste4 = [];
+    // existe uma div invisível que faz o processo de alimentação de teste2 a partir do webservice chamado em handleClick2
   }
 
   handleClick() {
@@ -38,13 +62,23 @@ export default class Curso extends React.Component {
   }
 
   handleClick2() {
+    var that = this;
+
     axios
       .get("https://randomuser.me/api/?results=2")
-      .then(response => {
-        // var arrayTeste = [];
-        // response.data.results.map(teste => arrayTeste.push(teste));
-        this.setState({ username2: response.data.results });
-        debugger;
+      .then(function(response) {
+        var arrayTeste = [];
+
+        response.data.results.map(teste => {
+          arrayTeste.push({
+            cep: teste.picture.thumbnail
+          });
+        });
+
+        that.setState({
+          username2: response.data.results,
+          sandoval: arrayTeste
+        });
       })
       .catch(e => {
         console.error(e);
@@ -52,8 +86,6 @@ export default class Curso extends React.Component {
   }
 
   render() {
-    var teste2 = "";
-    // existe uma div invisível que faz o processo de alimentação de teste2 a partir do webservice chamado em handleClick2
     return (
       <div>
         <h1>Atualmente no curso {cursos[this.props.params.id].nome}</h1>
@@ -91,11 +123,33 @@ export default class Curso extends React.Component {
         <br />
         <div style={{ display: "none" }}>
           {this.state.username2.map(
-            au => (teste2 += au.name.first + " - " + au.gender + "\n")
+            au =>
+              (teste2 +=
+                au.name.first +
+                "-" +
+                au.gender +
+                " <img src='" +
+                au.picture.thumbnail +
+                "' />\n") + (teste3 = au.picture.thumbnail)
           )}
         </div>
         <br />
-        {teste2}
+        pulando linha com teste2 (usando nl2br do react-newline-to-break):<br />
+        {nl2br(teste2)}
+        <br />
+        <br />
+        <br />
+        imagem de teste3 (último do WS)):<br />
+        <img src={teste3} />
+        <br />
+        <br />
+        <br />alimentando via let (declaração fixa):<br />
+        {imagens}
+        <br />
+        <br />
+        <br />
+        de componente (webservice - json):<br />
+        <Geyzo sandoval1={this.state.sandoval} />
       </div>
     );
   }
